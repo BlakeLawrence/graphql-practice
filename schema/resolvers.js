@@ -23,6 +23,12 @@ const resolvers = {
       return movie;
     },
   },
+
+  User: {
+    favouriteMovies: () => {
+      return _.filter(movieList, (movie) => movie.yearOfPublication > 2016);
+    },
+  },
 };
 
 module.exports = { resolvers };
