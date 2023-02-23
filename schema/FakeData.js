@@ -54,4 +54,31 @@ const userList = [
   },
 ];
 
-module.exports = { userList };
+const movieList = [
+  {
+    id: 1,
+    name: "Avengers Endgame",
+    yearOfPublication: 2019,
+    isInTheaters: true,
+  },
+  {
+    id: 2,
+    name: "Forest Gump",
+    yearOfPublication: 1995,
+    isInTheaters: false,
+  },
+  {
+    id: 3,
+    name: "Superbad",
+    yearOfPublication: 2010,
+    isInTheaters: true,
+  },
+  {
+    id: 4,
+    name: "Guardians Of The Galaxy 2",
+    yearOfPublication: 2016,
+    isInTheaters: true,
+  },
+];
+
+module.exports = { userList, movieList };
