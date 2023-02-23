@@ -1,7 +1,7 @@
-const { userList, movieList } = require("../schema/FakeData.js");
-const _ = require("lodash");
+import { userList, movieList } from "../schema/FakeData.js";
+import _ from "lodash";
 
-const resolvers = {
+export const resolvers = {
   Query: {
     // User Resolvers
     users: () => {
@@ -30,5 +30,3 @@ const resolvers = {
     },
   },
 };
-
-module.exports = { resolvers };

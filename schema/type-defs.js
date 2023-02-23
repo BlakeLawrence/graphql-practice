@@ -1,6 +1,6 @@
-const { gql } = require("apollo-server");
+import { gql } from "apollo-server";
 
-const typeDefs = gql`
+export const typeDefs = gql`
   type User {
     id: ID!
     name: String!
@@ -31,5 +31,3 @@ const typeDefs = gql`
     AMERICA
   }
 `;
-
-module.exports = { typeDefs };
