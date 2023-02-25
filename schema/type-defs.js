@@ -11,6 +11,12 @@ export const typeDefs = gql`
     favouriteMovies: [Movie]
   }
 
+  type Book {
+    id: ID!
+    name: String!
+    yearOfPublication: Int!
+  }
+
   type Movie {
     id: ID!
     name: String!
@@ -23,6 +29,7 @@ export const typeDefs = gql`
     user(id: ID!): User!
     movies: [Movie!]!
     movie(name: String!): Movie!
+    books: [Book!]!
   }
 
   enum Nationality {

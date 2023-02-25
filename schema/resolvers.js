@@ -1,4 +1,4 @@
-import { userList, movieList } from "../schema/FakeData.js";
+import { userList, movieList, bookList } from "../schema/FakeData.js";
 import _ from "lodash";
 
 export const resolvers = {
@@ -21,6 +21,11 @@ export const resolvers = {
       const name = args.name;
       const movie = _.find(movieList, { name });
       return movie;
+    },
+
+    // Book Resolvers
+    books: () => {
+      return bookList;
     },
   },
 

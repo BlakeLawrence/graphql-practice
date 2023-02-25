@@ -80,3 +80,15 @@ export const movieList = [
     isInTheaters: true,
   },
 ];
+export const bookList = [
+  {
+    id: 1,
+    name: "The Wind In The Willows",
+    yearOfPublication: 1982,
+  },
+  {
+    id: 2,
+    name: "Spud",
+    yearOfPublication: 2001,
+  },
+];
