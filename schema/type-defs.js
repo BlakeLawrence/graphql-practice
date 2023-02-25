@@ -24,8 +24,14 @@ export const typeDefs = gql`
     nationality: Nationality = AMERICA
   }
 
+  input updateUsernameInput {
+    id: ID!
+    newUsername: String!
+  }
+
   type Mutation {
     createUser(input: createUserInput!): User
+    updateUsername(input: updateUsernameInput!): User
   }
 
   type Movie {

@@ -29,6 +29,7 @@ export const resolvers = {
     },
   },
 
+  // Mutation resolvers
   Mutation: {
     createUser: (parent, args) => {
       const user = args.input;
@@ -36,6 +37,17 @@ export const resolvers = {
       user.id = lastId + 1;
       userList.push(user);
       return user;
+    },
+    updateUsername: (parent, args) => {
+      const { id, newUsername } = args.input;
+      let userUpdated;
+      userList.forEach((user) => {
+        if (user.id === Number(id)) {
+          user.username = newUsername;
+          userUpdated = user;
+        }
+      });
+      return userUpdated;
     },
   },
 
