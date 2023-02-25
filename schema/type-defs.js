@@ -17,6 +17,17 @@ export const typeDefs = gql`
     yearOfPublication: Int!
   }
 
+  input createUserInput {
+    name: String!
+    username: String!
+    age: Int!
+    nationality: Nationality = AMERICA
+  }
+
+  type Mutation {
+    createUser(input: createUserInput!): User
+  }
+
   type Movie {
     id: ID!
     name: String!

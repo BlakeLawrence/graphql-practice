@@ -29,6 +29,16 @@ export const resolvers = {
     },
   },
 
+  Mutation: {
+    createUser: (parent, args) => {
+      const user = args.input;
+      const lastId = userList[userList.length - 1].id;
+      user.id = lastId + 1;
+      userList.push(user);
+      return user;
+    },
+  },
+
   User: {
     favouriteMovies: () => {
       return _.filter(movieList, (movie) => movie.yearOfPublication > 2016);
