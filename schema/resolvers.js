@@ -49,6 +49,11 @@ export const resolvers = {
       });
       return userUpdated;
     },
+    deleteUser: (parent, args) => {
+      const id = args.id;
+      _.remove(userList, (user) => user.id === Number(id));
+      return null;
+    },
   },
 
   User: {
