@@ -1,4 +1,4 @@
-import { userList, movieList, bookList } from "../schema/FakeData.js";
+import { userList, movieList, bookList } from "./FakeData.js";
 import _ from "lodash";
 
 export const resolvers = {
