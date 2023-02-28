@@ -86,8 +86,9 @@ function DisplayData() {
 
       <div>
         <input
+          value={movieSearched}
           type="text"
-          placeholder="Forest Gump..."
+          placeholder="Enter a movie..."
           onChange={(e) => {
             setMovieSearched(e.target.value);
           }}
@@ -99,6 +100,7 @@ function DisplayData() {
                 name: movieSearched,
               },
             });
+            setMovieSearched("");
           }}
         >
           Fetch Data
