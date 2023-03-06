@@ -46,15 +46,25 @@ const CREATE_USER_MUTATION = gql`
     }
   }
 `;
+const DELETE_USER_MUTATION = gql`
+  mutation DeleteUser($id: ID!) {
+    deleteUser(id: $id) {
+      id
+    }
+  }
+`;
 
 function DisplayData() {
   const [movieSearched, setMovieSearched] = useState("");
 
-  // Create user States
+  // Create user states
   const [name, setName] = useState("");
   const [username, setUserName] = useState("");
   const [age, setAge] = useState(0);
   const [nationality, setNationality] = useState("");
+
+  // delete user state
+  const [id, setId] = useState("");
 
   const { data, loading, error, refetch } = useQuery(QUERY_ALL_USERS);
   const { data: movieData } = useQuery(QUERY_ALL_MOVIES);
@@ -62,6 +72,7 @@ function DisplayData() {
     useLazyQuery(GET_MOVIE_BY_NAME);
 
   const [createUser] = useMutation(CREATE_USER_MUTATION);
+  const [deleteUser] = useMutation(DELETE_USER_MUTATION);
 
   if (loading) {
     // use laoding spinner
@@ -115,6 +126,25 @@ function DisplayData() {
           }}
         >
           Create User
+        </button>
+        <input
+          type="text"
+          placeholder="User Id..."
+          onChange={(e) => {
+            setId(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            deleteUser({
+              variables: {
+                id: Number(id),
+              },
+            });
+            refetch();
+          }}
+        >
+          Delete User
         </button>
       </div>
       {/* mapping over users to display user data */}
