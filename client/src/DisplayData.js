@@ -40,7 +40,7 @@ function DisplayData() {
     useLazyQuery(getMovieByName);
 
   if (loading) {
-    // use laoding spinner in reality
+    // use laoding spinner
     return <h1>Data is Loading</h1>;
   }
 
