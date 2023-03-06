@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useQuery, useLazyQuery, gql } from "@apollo/client";
+import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 // Import comments:
 // useQuery allows us to make queries to our GQL API - it works by fetching the data whenever our component renders
 
@@ -38,12 +38,30 @@ const GET_MOVIE_BY_NAME = gql`
   }
 `;
 
+const CREATE_USER_MUTATION = gql`
+  mutation CreateUser($input: createUserInput!) {
+    createUser(input: $input) {
+      name
+      id
+    }
+  }
+`;
+
 function DisplayData() {
   const [movieSearched, setMovieSearched] = useState("");
+
+  // Create user States
+  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
+  const [age, setAge] = useState(0);
+  const [nationality, setNationality] = useState("");
+
   const { data, loading, error } = useQuery(QUERY_ALL_USERS);
   const { data: movieData } = useQuery(QUERY_ALL_MOVIES);
   const [fetchMovie, { data: movieSearchedData, error: movieError }] =
     useLazyQuery(GET_MOVIE_BY_NAME);
+
+  const [createUser] = useMutation(CREATE_USER_MUTATION);
 
   if (loading) {
     // use laoding spinner
@@ -58,7 +76,43 @@ function DisplayData() {
     <div>
       {/* creating a user using mutations  */}
       <div>
-        <button>Create User</button>
+        <input
+          type="text"
+          placeholder="Name...."
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="User Name..."
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        />
+        <input
+          type="number"
+          placeholder="Age..."
+          onChange={(e) => {
+            setAge(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Nationality..."
+          onChange={(e) => {
+            setNationality(e.target.value.toUpperCase());
+          }}
+        />
+        <button
+          onClick={() => {
+            createUser({
+              variables: { input: { name, username, age: 21, nationality } },
+            });
+          }}
+        >
+          Create User
+        </button>
       </div>
       {/* mapping over users to display user data */}
       {data &&
