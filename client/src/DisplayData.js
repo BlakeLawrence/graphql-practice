@@ -4,8 +4,6 @@ import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
 // Import comments:
 // useQuery allows us to make queries to our GQL API - it works by fetching the data whenever our component renders
 
-// useLazyQuery...
-
 // gql is for gql statement, it is just for when we write a qgl statement (gql ` `) - like we learnt in the sandbox and how we wrote statements in the typeDefs (example of it in use below for QUERY_ALL_USERS)
 
 const QUERY_ALL_USERS = gql`
@@ -16,6 +14,10 @@ const QUERY_ALL_USERS = gql`
       age
       username
       nationality
+      friends {
+        name
+        age
+      }
     }
   }
 `;
@@ -150,12 +152,25 @@ function DisplayData() {
       {/* mapping over users to display user data */}
       {data &&
         data.users.map((user) => {
+          console.log(data);
           return (
-            <div>
+            <div className="nameDiv">
               <h1>Name: {user.name}</h1>
               <h2>Username: {user.username}</h2>
               <h3>Age: {user.age}</h3>
               <h4>Nationality: {user.nationality}</h4>
+              <h4>
+                Friends:
+                {user.friends &&
+                  user.friends.map((friend) => {
+                    return (
+                      <div>
+                        <h3> name: {friend.name}</h3>
+                        <h4> age: {friend.age}</h4>
+                      </div>
+                    );
+                  })}
+              </h4>
               <br />
             </div>
           );
