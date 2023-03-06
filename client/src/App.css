@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+.mainDiv {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(8, 163, 104);
+  width: 100vw;
+  height: max-content;
+}
+.nameDiv {
+  width: 50%;
+  background-color: yellow;
+  border: 1px solid black;
+}
+.movies {
+  width: 50%;
+  background-color: yellow;
+  border: 1px solid black;
+}
+.mainMovieDiv {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(8, 163, 104);
+  width: 100vw;
+}

@@ -154,34 +154,39 @@ function DisplayData() {
         data.users.map((user) => {
           console.log(data);
           return (
-            <div className="nameDiv">
-              <h1>Name: {user.name}</h1>
-              <h2>Username: {user.username}</h2>
-              <h3>Age: {user.age}</h3>
-              <h4>Nationality: {user.nationality}</h4>
-              <h4>
-                Friends:
-                {user.friends &&
-                  user.friends.map((friend) => {
-                    return (
-                      <div>
-                        <h3> name: {friend.name}</h3>
-                        <h4> age: {friend.age}</h4>
-                      </div>
-                    );
-                  })}
-              </h4>
-              <br />
+            <div className="mainDiv">
+              <div className="nameDiv">
+                <h4>Id: {user.id}</h4>
+                <h1>Name: {user.name}</h1>
+                <h2>Username: {user.username}</h2>
+                <h3>Age: {user.age}</h3>
+                <h4>Nationality: {user.nationality}</h4>
+                <h4>
+                  Friends:
+                  {user.friends &&
+                    user.friends.map((friend) => {
+                      return (
+                        <div>
+                          <h3> name: {friend.name}</h3>
+                          <h4> age: {friend.age}</h4>
+                        </div>
+                      );
+                    })}
+                </h4>
+                <br />
+              </div>
             </div>
           );
         })}
       {movieData &&
         movieData.movies.map((movie) => {
           return (
-            <div>
-              <h3>Name: {movie.name}</h3>
-              <h4>Release Date: {movie.yearOfPublication}</h4>
-              <br />
+            <div className="mainMovieDiv">
+              <div className="movies">
+                <h3>Name: {movie.name}</h3>
+                <h4>Release Date: {movie.yearOfPublication}</h4>
+                <br />
+              </div>
             </div>
           );
         })}
